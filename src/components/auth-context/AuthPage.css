@@ -1,0 +1,25 @@
+.container{
+    margin-top: 55px;
+    border-top: 10px solid white;
+}
+
+.auth-text{
+    color: white;
+    font-style: italic;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+.auth-input{
+background-color: white;
+border: none;
+border-left: 30px solid rgb(20, 20, 20);
+padding: 15px;
+margin: 10px 0;
+color: black;
+}
+button{
+    margin-top: 25px;
+    font-style: italic;
+}

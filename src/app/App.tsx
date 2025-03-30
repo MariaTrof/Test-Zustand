@@ -1,7 +1,8 @@
-import '../styles/App.css'
+import './App.css'
 import { useStore } from '../store/store'
 import { useFormStore } from '../store/form'
 import { ChangeEvent, FormEvent, Key } from 'react'
+import { AuthPage } from '../components/auth-context/AuthPage'
 
 function App() {
   const { count, increment, reset } = useStore()
@@ -39,6 +40,8 @@ function App() {
           </li>
         ))}
       </div>
+
+      <AuthPage />
     </>
   )
 }

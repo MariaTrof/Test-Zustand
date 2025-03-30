@@ -33,7 +33,18 @@ export default tseslint.config(
         }
       ],
       "quotes": [ "error", "single" ], // Одинарные кавычки
-      "semi": [ "error", "never" ]     // Без ;
+      "semi": [ "error", "never" ],     // Без ;
+      "max-len": [                    // Новое правило для 80 символов
+        "error",
+        {
+          "code": 80,                 // Максимальная длина строки
+          "ignoreUrls": true,         // Игнорировать URL
+          "ignoreStrings": true,      // Игнорировать строки в кавычках
+          "ignoreTemplateLiterals": true, // Игнорировать `шаблонные строки`
+          "ignoreRegExpLiterals": true,  // Игнорировать /регулярки/
+          "ignoreComments": true      // Игнорировать комментарии
+        }
+      ]
     },
   },
 )
