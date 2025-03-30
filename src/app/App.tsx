@@ -1,33 +1,44 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import '../styles/App.css'
-import { useStore }  from '../store/store'
+import { useStore } from '../store/store'
+import { useFormStore } from '../store/form'
+import { ChangeEvent, FormEvent, Key } from 'react'
 
 function App() {
-const { count, increment, reset } = useStore(); 
+  const { count, increment, reset } = useStore()
+  const { formData, setFormData, submitForm, submittedData } = useFormStore()
 
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
+  }
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
+    submitForm()
+  }
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={increment}>+</button>
-         <h1>count is {count}</h1> 
+        <h1>count is {count}</h1>
         <button onClick={reset}>Reset</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h2 className="read-the-docs">Form Element</h2>
+      <form className="form" onSubmit={handleSubmit}>
+        <p>Enter Your Secret Word Here:</p>
+        <input className="input-custom" value={formData.name} name="name" onChange={handleChange} />
+        <button type="submit">Submit!</button>
+      </form>
+
+      <h2 className="read-the-docs">Your Other Secret Words Are Here:</h2>
+      <div className="list">
+        {submittedData.map((item: { id: Key | number; name: string }) => (
+          <li key={item.id}>
+            <p className="text">{item.name}</p>
+          </li>
+        ))}
+      </div>
     </>
   )
 }
