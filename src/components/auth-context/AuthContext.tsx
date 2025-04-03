@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useCallback, useState, useContext } from 'react'
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useState,
+  useContext
+} from 'react'
 import { Auth, AuthContextTypes } from './Auth.types'
 
 const AuthContext = createContext<AuthContextTypes | null>(null)

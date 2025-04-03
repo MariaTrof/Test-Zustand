@@ -34,7 +34,7 @@ const AuthPage: FC = () => {
       ) : (
         <div className="auth">
           <h2 className="auth-text">Try to Log In Here:</h2>
-
+          {/* <p>Correct username is "Admin", correct password is "12345"</p> */}
           {error && <div className="auth-error">{error}</div>}
 
           <form onSubmit={handleSubmit}>
@@ -47,7 +47,7 @@ const AuthPage: FC = () => {
             />
             <input
               className="auth-input"
-              type="text"
+              type="password"
               name="password"
               onChange={handleChange}
               value={formData.password}
